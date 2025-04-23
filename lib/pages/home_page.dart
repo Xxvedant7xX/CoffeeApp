@@ -1,7 +1,6 @@
 import 'package:coffee_app/components/bottom_nav_bar.dart';
 import 'package:coffee_app/const.dart';
 import 'package:flutter/material.dart';
-
 import 'cart_page.dart';
 import 'shop_page.dart';
 

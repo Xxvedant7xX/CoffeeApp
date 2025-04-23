@@ -1,4 +1,6 @@
+import 'package:coffee_app/models/coffee_shop.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -10,9 +12,11 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return ChangeNotifierProvider(create:(context) => CoffeeShop(),
+    builder: (context, child) => const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
+    ),
     );
   }
 }
