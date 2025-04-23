@@ -12,6 +12,25 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+
+  // add coffee to cart
+  void addToCart(Coffee coffee) {
+
+    // add to cart
+    Provider.of<CoffeeShop>(context, listen: false).addItemToCart(coffee);
+
+    // successfully added notification
+    showDialog(
+      context: context, 
+      builder: (context) => AlertDialog(
+        title: Text('Successfully added to cart',
+        style: TextStyle(fontSize: 20,
+        fontWeight: FontWeight.bold,
+        ),
+        ),
+      ),
+      );
+  }
   @override
   Widget build(BuildContext context) {
     return Consumer<CoffeeShop>(builder:(context, value, child) => SafeArea(
@@ -34,7 +53,11 @@ class _ShopPageState extends State<ShopPage> {
               Coffee eachCoffee = value.coffeeShop[index];
 
               // return the tile for this coffee
-              return CoffeeTile(coffee: eachCoffee);
+              return CoffeeTile(
+                coffee: eachCoffee,
+                icon: Icon(Icons.add),
+                onPressed: () => addToCart(eachCoffee),
+                );
             },
            ),
           ),
